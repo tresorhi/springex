@@ -2,11 +2,12 @@
   Created by IntelliJ IDEA.
   User: treso
   Date: 2023-02-17
-  Time: 오전 6:21
+  Time: 오전 6:43
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -54,29 +55,40 @@
             Featured
           </div>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <table class="table">
-              <thead>
-              <tr>
-                <th scope="col">Tno</th>
-                <th scope="col">Title</th>
-                <th scope="col">Writer</th>
-                <th scope="col">DueDate</th>
-                <th scope="col">Finished</th>
-              </tr>
-              </thead>
-              <tbody>
-              <c:forEach items="${dtoList}" var="dto">
-                <tr>
-                  <th scope="row"><c:out value="${dto.tno}"/></th>
-                  <th scope="row"><c:out value="${dto.title}"/></th>
-                  <th scope="row"><c:out value="${dto.writer}"/></th>
-                  <th scope="row"><c:out value="${dto.dueDate}"/></th>
-                  <th scope="row"><c:out value="${dto.finished}"/></th>
-                </tr>
-              </c:forEach>
-              </tbody>
-            </table>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">TNO</span>
+              <input type="text" name="tno" class="form-control" value=<c:out value="${dto.tno}"></c:out> readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Title</span>
+              <input type="text" name="title" class="form-control" value='<c:out value="${dto.title}"></c:out>' readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">DueDate</span>
+              <input type="date" name="dueDate" class="form-control" value=<c:out value="${dto.dueDate}"></c:out> readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">Writer</span>
+              <input type="text" name="writer" class="form-control" value=<c:out value="${dto.writer}"></c:out> readonly>
+            </div>
+
+            <div class="form-check">
+              <label class="form-check-label">
+                Finished &nbsp;
+              </label>
+              <input class="form-check-input" type="checkbox" name="finished" ${dto.finished?"checked":""} disabled>
+            </div>
+
+            <div class="my-4">
+              <div class="float-end">
+                <button type="button" class="btn btn-primary">Modify</button>
+                <button type="button" class="btn btn-secondary">List</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
