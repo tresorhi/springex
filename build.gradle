@@ -54,6 +54,9 @@ dependencies {
     //DTO 검증을 위한 Validate 라이브러리
     implementation('org.hibernate:hibernate-validator:6.2.1.Final')
 
+    //Validate 관련
+    implementation('org.hibernate:hibernate-validator:6.2.1.Final')
+
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
