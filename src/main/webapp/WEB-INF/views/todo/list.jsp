@@ -12,7 +12,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>Todo List</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
@@ -66,7 +66,7 @@
               </tr>
               </thead>
               <tbody>
-              <c:forEach items="${dtoList}" var="dto">
+              <c:forEach items="${responseDTO.dtoList}" var="dto">
                 <tr>
                   <th scope="row"><c:out value="${dto.tno}"/></th>
                   <th scope="row"><a href="/todo/read?tno=${dto.tno}" class="text-decoration-none"><c:out value="${dto.title}"/></a></th>
@@ -77,6 +77,28 @@
               </c:forEach>
               </tbody>
             </table>
+
+            <div class="float-end">
+                <ul class="pagination flex-wrap">
+                  <c:if test="${responseDTO.prev}">
+                    <li class="page-item">
+                      <a class="page-link">Previous</a>
+                    </li>
+                  </c:if>
+
+                  <c:forEach begin="${responseDTO.start}" end="${responseDTO.end}" var="num">
+                    <li class="page-item ${responseDTO.page == num? "active":""}">
+                      <a class="page-link" href="#">${num}</a>
+                    </li>
+                  </c:forEach>
+
+                  <c:if test="${responseDTO.next}">
+                    <li class="page-item">
+                      <a class="page-link">Next</a>
+                    </li>
+                  </c:if>
+                </ul>
+            </div>
           </div>
         </div>
       </div>
